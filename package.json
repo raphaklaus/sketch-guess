@@ -1,0 +1,28 @@
+{
+  "name": "sketch-guess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prestart": "webpack -p",
+    "start": "node api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raphaklaus/sketch-guess.git"
+  },
+  "author": "raphaklaus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/raphaklaus/sketch-guess/issues"
+  },
+  "homepage": "https://github.com/raphaklaus/sketch-guess#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.1",
+    "mongoose": "^4.8.3",
+    "sketchpad": "^0.1.0",
+    "webpack": "^2.2.1"
+  }
+}
