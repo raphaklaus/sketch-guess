@@ -5,6 +5,7 @@
         "node": true
     },
     "globals": {
+      "io"
     },
     "extends": "eslint:recommended",
     "parserOptions": {
