@@ -3,21 +3,31 @@ const webpack = require('webpack'),
 
 module.exports = {
   devServer: {
-    inline: true,
     contentBase: './dist',
     port: 9000
   },
-  entry: './client/src/js/index.js',
+  entry: './client/js/entry.js',
   module: {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015']
+        },
         exclude: /node_modules/
       },
       {
         test: /\.styl/,
-        loader: 'style-loader!css-loader!stylus-loader'
+        loader: 'style-loader!css-loader!postcss-loader!stylus-loader'
+      },
+      {
+        test: /\.css/,
+        loader: 'style-loader!css-loader'
+      },
+      {
+        test: /\.(woff|woff2|svg|eot|ttf)(\?.+)?$/i,
+        loader: 'file-loader?name=[name].[ext]'
       }
     ]
   },
@@ -27,6 +37,6 @@ module.exports = {
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new HtmlWebPackPlugin({template: 'client/src/index.html', inject: 'body'})
+    new HtmlWebPackPlugin({ template: 'client/index.html', inject: 'body' })
   ]
 };
