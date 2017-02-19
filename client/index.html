@@ -1,75 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="SketchGuess">
   <head>
     <meta charset="utf-8">
     <title>Sketch Guess</title>
   </head>
   <body>
-    <div class="hero is-primary is-medium">
-      <navbar class="hero-head">
+    <navbar class="hero is-primary is-medium" ng-controller="MenuController as ctrl">
+      <div class="hero-head">
         <header class="nav">
           <div class="container">
             <div class="nav-left">
-              <a class="nav-item">
+              <a ui-sref="home" class="nav-item">
                 <i class="fa fa-hand-peace-o icon is-large"></i>
                 <h1 class="title brand">Sketch Guess</h1>
               </a>
             </div>
             <div class="nav-right nav-menu">
-              <a class="nav-item is-active">
+              <a ui-sref="home" class="nav-item" ng-class="ctrl.activeMenu('home')">
                 <i class="fa fa-gamepad"></i>
                 Play
               </a>
-              <a class="nav-item">
+              <a ui-sref="points" class="nav-item" ng-class="ctrl.activeMenu('points')">
                 <i class="fa fa-circle"></i>
                 Your points
               </a>
-              <a class="nav-item">
+              <a ui-sref="ranking" class="nav-item" ng-class="ctrl.activeMenu('ranking')">
                 <i class="fa fa-trophy"></i>
                 Ranking
               </a>
               <span class="nav-item">
-                <a class="button is-primary is-inverted">
+                <a href="https://github.com/raphaklaus/sketch-guess" target="_blank" class="button is-primary is-inverted">
                   <span class="icon">
                     <i class="fa fa-github"></i>
                   </span>
-                  <span>Fork on GitHub</span>
+                  <span>Give a star</span>
                 </a>
               </span>
             </div>
           </div>
         </header>
-      </navbar>
-
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <h1 class="title">
-            Play with a friend! Share this address
-          </h1>
-          <div class="control has-addons">
-            <input type="text" class="input is-expanded is-large" disabled />
-            <button class="button is-primary is-inverted is-outlined is-large">
-              Copy
-            </button>
-          </div>
-          <h2 class="subtitle is-2">
-            <a>
-              <i class="fa fa-play animated tada"></i>
-              <u>Go to lobby!</u>
-            </a>
-          </h2>
-        </div>
       </div>
-    </div>
+    </navbar>
 
-    <section class="section">
-      <article class="container">
-        <p>It's alive! =)</p>
-        <p>Draw below:</p>
-        <a class="button is-primary">Olá!</a>
-        <div id="sketchpad"></div>
-      </article>
-    </section>
+    <section ui-view></section>
+
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
   </body>
 </html>
