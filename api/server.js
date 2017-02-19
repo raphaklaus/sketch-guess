@@ -4,6 +4,7 @@ const express = require('express'),
   Promise = require('bluebird'),
   mongoose = require('mongoose'),
   server = require('http').createServer(app),
+  CodeGenerator = require('./codegenerator.js'),
   io = require('socket.io')(server);
 
 // mongoose.connect(process.env.MONGO_URL);
@@ -20,6 +21,11 @@ app.all('*', require('./cors.js')());
 
 io.on('connection', socket => {
   console.log('A user connected');
+});
+
+app.get('/api/code', (req, res) => {
+  // change CodeGenerator to Room
+  res.json({ code: CodeGenerator.generate() });
 });
 
 // Error handiling
