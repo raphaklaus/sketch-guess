@@ -1,12 +1,13 @@
 const webpack = require('webpack'),
-  HtmlWebPackPlugin = require('html-webpack-plugin');
+  HtmlWebPackPlugin = require('html-webpack-plugin'),
+  path = require('path');
 
 module.exports = {
   devServer: {
     contentBase: './dist',
     port: 9000
   },
-  entry: './client/js/entry.js',
+  entry: './client/entry.js',
   module: {
     loaders: [
       {
@@ -28,12 +29,21 @@ module.exports = {
       {
         test: /\.(woff|woff2|svg|eot|ttf)(\?.+)?$/i,
         loader: 'file-loader?name=[name].[ext]'
-      }
+      },
+      {
+        test: /\.html$/,
+        include: path.resolve(__dirname, 'client/app/'),
+        loader: `ngtemplate-loader?relativeTo=${__dirname}/client/app/!html`
+      },
+      {
+        test: /\index.html$/,
+        loader: 'html?name=[name].[ext]'
+      },
     ]
   },
   output: {
     path: 'dist',
-    filename: 'js/bundle-[hash].min.js'
+    filename: 'bundle-[hash].min.js'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
