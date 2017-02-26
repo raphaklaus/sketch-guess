@@ -31,6 +31,6 @@ app.get('/api/code', (req, res) => {
 // Error handiling
 require('./error.handler.js')(app);
 
-server.listen(process.env.PORT || 80, () => {
+server.listen(process.env.PORT || 3000, () => {
   console.log('Service started');
 });
