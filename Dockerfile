@@ -1,5 +1,7 @@
 FROM node:boron
 RUN npm install webpack -g
+RUN npm install webpack-dev-server -g
+RUN npm install pm2 -g
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY package.json /usr/src/app/

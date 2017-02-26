@@ -2,6 +2,9 @@ version: '2'
 services:
   app:
     build: .
+    command: bash -c "pm2 start api/server.js --watch && webpack && webpack-dev-server"
+    volumes:
+      - "./:/usr/src/app"
     ports:
      - "80:80"
   mongo:
