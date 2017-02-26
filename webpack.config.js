@@ -7,15 +7,12 @@ module.exports = {
     contentBase: './dist',
     port: 9000
   },
-  entry: './client/entry.js',
+  entry: ['./client/entry.js'],
   module: {
     loaders: [
       {
         test: /\.js$/,
         loader: 'babel-loader',
-        query: {
-          presets: ['es2015']
-        },
         exclude: /node_modules/
       },
       {
@@ -33,17 +30,17 @@ module.exports = {
       {
         test: /\.html$/,
         include: path.resolve(__dirname, 'client/app/'),
-        loader: `ngtemplate-loader?relativeTo=${__dirname}/client/app/!html`
+        loader: `ngtemplate-loader?relativeTo=${__dirname}/client/app/!html-loader`
       },
       {
         test: /\index.html$/,
-        loader: 'html?name=[name].[ext]'
+        loader: 'html-loader?name=[name].[ext]'
       },
     ]
   },
   output: {
-    path: 'dist',
-    filename: 'bundle-[hash].min.js'
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle-[hash].js'
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
