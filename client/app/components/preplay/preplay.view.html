@@ -1,0 +1,14 @@
+<article>
+  <p>Please, choose your the word you're gonna draw</p>
+  <form ng-submit="ctrl.goToPlay()">
+    <label class="label">
+      <p class="control">
+        <input type="text" class="input is-expanded is-large" ng-model="ctrl.word"
+          placeholder="Ex: banana, dog, tree..." ng-required="true"/>
+      </p>
+    </label>
+    <p class="control">
+      <button class="button is-primary is-large">Go!</button>
+    </p>
+  </form>
+</article>

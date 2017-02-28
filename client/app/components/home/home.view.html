@@ -1,17 +1,15 @@
 <article class="hero">
   <div class="hero-body">
-    <div class="container has-text-centered"
+    <div class="container has-text-centered">
       <h1 class="title">
         Play with a friend! Share this address
       </h1>
       <div class="control has-addons">
-        <input type="text" class="input is-expanded is-large" disabled ng-value="ctrl.room"/>
-        <button class="button is-primary is-inverted is-outlined is-large">
-          Copy
-        </button>
+        <input type="text" id="roomInput" class="input is-expanded is-large" readonly ng-value="ctrl.room.address"/>
+        <button class="button is-primary is-inverted is-outlined is-large" ng-hide="ctrl.copied" ng-click="ctrl.copy()" ngclipboard data-clipboard-target="#roomInput" ng-bind="ctrl.roomInputButtonName"></button>
       </div>
       <h2 class="subtitle is-2">
-        <a>
+        <a ui-sref="preplay({address: ctrl.room.address, code: ctrl.room.code})">
           <i class="fa fa-play animated shake"></i>
           <u>Go to lobby!</u>
         </a>

@@ -5,7 +5,10 @@ class CodeService {
 
   getRoomAddress() {
     return this._$http.get('/api/code').then(result => {
-      return `${location.href}play/${result.data.code}`;
+      return {
+        address: `${location.href}play/${result.data.code}`,
+        code: result.data.code
+      };
     });
   }
 }
