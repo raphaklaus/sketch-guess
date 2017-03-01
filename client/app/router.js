@@ -15,11 +15,11 @@ class Router {
           controller: 'PointsController as ctrl'
         })
         .state('play', {
-          url: '/play',
+          url: '/play/:code?',
           params: {
             address: null,
-            code: null,
-            word: null
+            word: null,
+            creator: null
           },
           templateUrl: 'components/play/play.view.html',
           controller: 'PlayController as ctrl'

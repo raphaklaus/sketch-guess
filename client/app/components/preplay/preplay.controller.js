@@ -7,11 +7,12 @@ class PrePlayController {
     this._$stateParams = $stateParams;
     this.code = this._$stateParams.code;
     this.address = this._$stateParams.address;
+    this.creator = this._$stateParams.creator || 'wow';
   }
 
   goToPlay() {
     this._$state.go('play', { address: this.address,
-      code: this.code, word: this.word });
+      code: this.code, word: this.word, creator: this.creator });
   }
 }
 

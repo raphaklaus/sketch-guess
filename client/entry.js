@@ -6,5 +6,3 @@ import 'animate.css/animate.css';
 import './angular-entry.js';
 
 import './app/app.js';
-
-var socket = io();
